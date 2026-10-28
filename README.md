@@ -28,13 +28,16 @@ The Structural Similarity (SSIM) threshold tells the permissible deviation in ov
 The Kalman Kinematic Tracker evaluates the physical translation of entities across frames, measuring the distance in pixels to identify anomalous spatial discontinuities mathematically classified as teleportation. Threshold adjustment is required when rapid perspective shifts, sudden field-of-view modifications, or standard entity generation animations trigger false kinematic violations. The threshold is configured by modifying the distance parameters within the KineticEntityTracker class. A baseline distance of 120.0 pixels is optimal for slow-paced visual data to detect minor positional skips. Analyzing high-velocity environments necessitates elevating the threshold to a range of 350.0 to 400.0 pixels, which accommodates rapid animation cycles while successfully flagging absolute geometric anomalies.
 The Furnace GUI Chrono-Scanner functions by isolating the center of the frame and measuring the pixel-width of specific graphical user interface elements to verify adherence to 200-tick game mechanics. This module must only be activated when the targeted video segment features an open interface menu. During open-world navigation, the module must be disabled to prevent the scanner from erroneously interpreting center-screen block placements, crosshair movements, or tool animations as fractured interface elements. Deactivation is achieved by commenting out the furnace event execution line within the run_algorithmic_scan method. 
 This is done by changing:  
-               if ssim_event: self.events.append(ssim_event); logging.warning(ssim_event.mathematical_proof)
+               
+if ssim_event: self.events.append(ssim_event); logging.warning(ssim_event.mathematical_proof)
                 if furnace_event: self.events.append(furnace_event); logging.warning(furnace_event.mathematical_proof)
                 for e in kinetic_events: self.events.append(e); logging.warning(e.mathematical_proof)
 TO
-               if ssim_event: self.events.append(ssim_event); logging.warning(ssim_event.mathematical_proof)
+               
+if ssim_event: self.events.append(ssim_event); logging.warning(ssim_event.mathematical_proof)
                 # if furnace_event: self.events.append(furnace_event); logging.warning(furnace_event.mathematical_proof)
                 for e in kinetic_events: self.events.append(e); logging.warning(e.mathematical_proof)
+
 To minimize baselines during standard forensic scans, the current version of the software repository on GitHub has the code with the Furnace scanner disabled by default. To enable it, please follow the tutorial above to enable it( remove the # ).
 Execution 
 As said before, you must use Google Collab for this script or else it will not work properly.
