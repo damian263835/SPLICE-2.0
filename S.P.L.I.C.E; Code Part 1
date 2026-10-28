@@ -1,0 +1,5 @@
+# ==========================================
+# PART 1: DEPENDENCIES & ENVIRONMENT SETUP
+# ==========================================
+!pip install scikit-image opencv-python
+print("Forensic dependencies installed. Awaiting video evidence in local runtime...")
