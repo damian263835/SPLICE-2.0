@@ -1,0 +1,24 @@
+# ==========================================
+# PART 1: INTERACTIVE FILE UPLOAD & SETUP
+# ==========================================
+!pip install scikit-image opencv-python
+
+import os
+from google.colab import files
+
+print("=========================================================")
+print("S.P.L.I.C.E. INTERACTIVE EVIDENCE UPLOAD")
+print("=========================================================")
+print("Click the 'Choose Files' button below to upload your video.")
+print("=========================================================")
+
+# Trigger Colab's native file upload widget
+uploaded = files.upload()
+
+if not uploaded:
+    raise Exception("No file was uploaded. Please re-run the cell and select your video.")
+
+# Automatically grab whatever file name you uploaded
+uploaded_filename = list(uploaded.keys())[0]
+print(f"\n[+] Successfully uploaded: {uploaded_filename}")
+print("[+] Evidence secured in local runtime. You may now run Part 2.")
